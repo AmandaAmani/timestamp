@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de timestamp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input {
+            padding: 10px;
+            width: 200px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Conversor de timestamp da Mandz</h2>
+        <input type="text" id="timestampInput" placeholder="Insira o timestamp">
+        <br>
+        <button onclick="convertTimestamp()">Converter</button>
+        <div class="output">
+            <p id="outputText"></p>
+        </div>
+    </div>
+
+    <script>
+        function convertTimestamp() {
+            const timestamp = document.getElementById('timestampInput').value;
+
+            // Check if the timestamp is in seconds and convert to milliseconds if necessary
+            const date = new Date(timestamp.length === 10 ? timestamp * 1000 : parseInt(timestamp));
+
+            if (!isNaN(date.getTime())) {
+                document.getElementById('outputText').innerText = `Converted Date: ${date.toUTCString()}`;
+            } else {
+                document.getElementById('outputText').innerText = "Invalid timestamp.";
+            }
+        }
+    </script>
+
+</body>
+</html>
